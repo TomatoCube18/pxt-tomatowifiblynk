@@ -1,0 +1,14 @@
+{
+    "name": "tomatowifiblynk",
+    "version": "0.1.0",
+    "dependencies": {
+        "core": "*",
+        "radio": "*"
+    },
+    "description": "Tomato Wifi mainboard Blynk module",
+    "files": [
+        "tomatowifiblynk.ts",
+        "README.md"
+    ],
+    "public": true
+}
