@@ -190,6 +190,10 @@ namespace TOMATOWIFINTPTIME {
 
     //% block="Request time from NTP Service"
     export function requestTime() {
+        _day = 0
+        _hour = 0
+        _minute = 0
+        _second = 0
         serial.writeString("T?\n")
         basic.pause(100)
     }
@@ -285,6 +289,17 @@ namespace TOMATOWIFIOPENWEATHER {
     export function requestWeather(lat: number, lon: number, openweatherid: string) {
         serial.writeString("W=" + openweatherid + "\n")
         basic.pause(150)
+         _main = ""
+        _temperature = 0
+        _pressure = 0
+        _humidity = 0
+        _visibility = 0
+        _uvindex = 0
+        _cloudpct = 0
+        _windspeed = 0
+        _winddegree = 0
+        _rain = 0
+        _snow = 0
         serial.writeString("C" + lat.toString() + "," + lon.toString() + "\n")
         basic.pause(100)
     }
