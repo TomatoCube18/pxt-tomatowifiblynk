@@ -123,6 +123,8 @@ namespace TOMATOWIFIBLYNK {
         basic.pause(200)
         serial.writeString(passcode + "\n")
         basic.pause(200)
+        serial.writeString("0\n")
+        basic.pause(200)
         TomatoWifiConnected = 1
 
         if (readyImg)
