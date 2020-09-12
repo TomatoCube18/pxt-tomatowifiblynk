@@ -284,7 +284,7 @@ namespace TOMATOWIFIOPENWEATHER {
         }
     }
 
-    //% block="Request Weather for Latitude %lat Longitude %lon with OpenWeatherMap authCode %openweatherid" 
+    //% block="Request Weather for a location with a Latitude %lat Longitude %lon using OpenWeatherMap authCode %openweatherid" 
     //% lat.defl=5.41 lon.defl=100.34 openweatherid.defl=OpenWeatherMapAuthCode 
     export function requestWeather(lat: number, lon: number, openweatherid: string) {
         serial.writeString("W=" + openweatherid + "\n")
