@@ -4,19 +4,19 @@
  */
 
 let TomatoWifiConnected = 0
-// let weatherKey = 0
+let weatherKey = 0
 
-// let _main = ""
-// let _temperature = 0
-// let _pressure = 0
-// let _humidity = 0
-// let _visibility = 0
-// let _uvindex = 0
-// let _cloudpct = 0
-// let _windspeed = 0
-// let _winddegree = 0
-// let _rain = 0
-// let _snow = 0
+let _main = ""
+let _temperature = 0
+let _pressure = 0
+let _humidity = 0
+let _visibility = 0
+let _uvindex = 0
+let _cloudpct = 0
+let _windspeed = 0
+let _winddegree = 0
+let _rain = 0
+let _snow = 0
 
 let _day = 0
 let _hour = 0
@@ -140,10 +140,8 @@ namespace TOMATOWIFIBLYNK {
                 SerialPin.P15,
                 BaudRate.BaudRate115200
         )
-//         serial.setRxBufferSize(128)
-//         serial.setTxBufferSize(128)
-        serial.setRxBufferSize(64)
-        serial.setTxBufferSize(64)
+        serial.setRxBufferSize(128)
+        serial.setTxBufferSize(128)
         basic.pause(1000)
         if (readyImg)
             basic.showIcon(IconNames.Yes)
@@ -203,106 +201,106 @@ namespace TOMATOWIFINTPTIME {
 }
 
 
-// /**
-//  * Blocks
-//  */
-// //% weight=100 color=#8e44ad icon="\uf2ca" block="TomatoWifiOpenWeather"
+/**
+ * Blocks
+ */
+//% weight=100 color=#8e44ad icon="\uf2ca" block="TomatoWifiOpenWeather"
 
-// namespace TOMATOWIFIOPENWEATHER {
+namespace TOMATOWIFIOPENWEATHER {
 
-//     //% block="Get OpenWeatherMap Snow Volume in mm"
-//     export function getOpenWeatherSnowVolumeInMilimeters():number {
-//             return _snow
-//     }
+    //% block="Get OpenWeatherMap Snow Volume in mm"
+    export function getOpenWeatherSnowVolumeInMilimeters():number {
+            return _snow
+    }
 
-//     //% block="Get OpenWeatherMap Precipitation Volume in mm"
-//     export function getOpenWeatherPrecipitationVolumeInMilimeters():number {
-//             return _rain
-//     }
+    //% block="Get OpenWeatherMap Precipitation Volume in mm"
+    export function getOpenWeatherPrecipitationVolumeInMilimeters():number {
+            return _rain
+    }
     
-//     //% block="Get OpenWeatherMap Wind Direction"
-//     export function getOpenWeatherWindDirection():number {
-//             return _winddegree
-//     }
+    //% block="Get OpenWeatherMap Wind Direction"
+    export function getOpenWeatherWindDirection():number {
+            return _winddegree
+    }
 
-//     //% block="Get OpenWeatherMap Wind Speed in m/s"
-//     export function getOpenWeatherWindSpeed():number {
-//             return _windspeed
-//     }
+    //% block="Get OpenWeatherMap Wind Speed in m/s"
+    export function getOpenWeatherWindSpeed():number {
+            return _windspeed
+    }
     
-//     //% block="Get OpenWeatherMap UV Index"
-//     export function getOpenWeatherUVIndex():number {
-//             return _uvindex
-//     }
+    //% block="Get OpenWeatherMap UV Index"
+    export function getOpenWeatherUVIndex():number {
+            return _uvindex
+    }
     
-//     //% block="Get OpenWeatherMap Average Visibility in m"
-//     export function getOpenWeatherAverageVisibilityInMeters():number {
-//             return _visibility
-//     }
+    //% block="Get OpenWeatherMap Average Visibility in m"
+    export function getOpenWeatherAverageVisibilityInMeters():number {
+            return _visibility
+    }
 
-//     //% block="Get OpenWeatherMap Cloudiness in percent"
-//     export function getOpenWeatherCloudinessInPercent():number {
-//             return _cloudpct
-//     }
+    //% block="Get OpenWeatherMap Cloudiness in percent"
+    export function getOpenWeatherCloudinessInPercent():number {
+            return _cloudpct
+    }
 
-//     //% block="Get OpenWeatherMap Humidity  in percent"
-//     export function getOpenWeatherHumidityInPercent():number {
-//             return _humidity
-//     }
+    //% block="Get OpenWeatherMap Humidity  in percent"
+    export function getOpenWeatherHumidityInPercent():number {
+            return _humidity
+    }
     
-//     //% block="Get OpenWeatherMap Atmospheric Pressure in hPa"
-//     export function getOpenWeatherAtmosphericPressure():number {
-//             return _pressure
-//     }
+    //% block="Get OpenWeatherMap Atmospheric Pressure in hPa"
+    export function getOpenWeatherAtmosphericPressure():number {
+            return _pressure
+    }
 
-//     //% block="Get OpenWeatherMap Temperature in Celcius"
-//     export function getOpenWeatherTemperature():number {
-//             return _temperature
-//     }
+    //% block="Get OpenWeatherMap Temperature in Celcius"
+    export function getOpenWeatherTemperature():number {
+            return _temperature
+    }
     
-//     //% block="Get OpenWeatherMap Weather Summary"
-//     export function getOpenWeatherString():string {
-//             return _main
-//     }
+    //% block="Get OpenWeatherMap Weather Summary"
+    export function getOpenWeatherString():string {
+            return _main
+    }
 
-//     //% block="Is valid OpenWeatherMap result %receivedString" 
-//     export function isOpenWeatherMapTrue(receivedString: string):boolean {
-//         if (receivedString.includes("WEATHER=T") && receivedString.includes("ms!")) { 
-//             _temperature = parseFloat(receivedString.substr(receivedString.indexOf("WEATHER=T") + 9, receivedString.indexOf("tP") - receivedString.indexOf("WEATHER=T") - 9))
-//             _pressure = parseFloat(receivedString.substr(receivedString.indexOf("tP") + 2, receivedString.indexOf("pH") - receivedString.indexOf("tP") - 2))
-//             _humidity = parseInt(receivedString.substr(receivedString.indexOf("pH") + 2, receivedString.indexOf("hV") - receivedString.indexOf("pH") - 2),10)
-//             _visibility = parseInt(receivedString.substr(receivedString.indexOf("hV") + 2, receivedString.indexOf("vU") - receivedString.indexOf("hV") - 2),10)
-//             _uvindex = parseFloat(receivedString.substr(receivedString.indexOf("vU") + 2, receivedString.indexOf("uC") - receivedString.indexOf("vU") - 2))
-//             _cloudpct = parseInt(receivedString.substr(receivedString.indexOf("uC") + 2, receivedString.indexOf("cWS") - receivedString.indexOf("uC") - 2),10)
-//             _windspeed = parseFloat(receivedString.substr(receivedString.indexOf("cWS") + 3, receivedString.indexOf("wWD") - receivedString.indexOf("cWS") - 3))
-//             _winddegree = parseInt(receivedString.substr(receivedString.indexOf("wWD") + 3, receivedString.indexOf("wR") - receivedString.indexOf("wWD") - 3),10)
-//             _rain = parseFloat(receivedString.substr(receivedString.indexOf("wR") + 2, receivedString.indexOf("rS") - receivedString.indexOf("wR") - 2))
-//             _snow = parseFloat(receivedString.substr(receivedString.indexOf("rS") + 2, receivedString.indexOf("sMS") - receivedString.indexOf("rS") - 2))
-//             _main = receivedString.substr(receivedString.indexOf("sMS") + 3, receivedString.indexOf("ms!") - receivedString.indexOf("sMS") - 3)
+    //% block="Is valid OpenWeatherMap result %receivedString" 
+    export function isOpenWeatherMapTrue(receivedString: string):boolean {
+        if (receivedString.includes("WEATHER=T") && receivedString.includes("ms!")) { 
+            _temperature = parseFloat(receivedString.substr(receivedString.indexOf("WEATHER=T") + 9, receivedString.indexOf("tP") - receivedString.indexOf("WEATHER=T") - 9))
+            _pressure = parseFloat(receivedString.substr(receivedString.indexOf("tP") + 2, receivedString.indexOf("pH") - receivedString.indexOf("tP") - 2))
+            _humidity = parseInt(receivedString.substr(receivedString.indexOf("pH") + 2, receivedString.indexOf("hV") - receivedString.indexOf("pH") - 2),10)
+            _visibility = parseInt(receivedString.substr(receivedString.indexOf("hV") + 2, receivedString.indexOf("vU") - receivedString.indexOf("hV") - 2),10)
+            _uvindex = parseFloat(receivedString.substr(receivedString.indexOf("vU") + 2, receivedString.indexOf("uC") - receivedString.indexOf("vU") - 2))
+            _cloudpct = parseInt(receivedString.substr(receivedString.indexOf("uC") + 2, receivedString.indexOf("cWS") - receivedString.indexOf("uC") - 2),10)
+            _windspeed = parseFloat(receivedString.substr(receivedString.indexOf("cWS") + 3, receivedString.indexOf("wWD") - receivedString.indexOf("cWS") - 3))
+            _winddegree = parseInt(receivedString.substr(receivedString.indexOf("wWD") + 3, receivedString.indexOf("wR") - receivedString.indexOf("wWD") - 3),10)
+            _rain = parseFloat(receivedString.substr(receivedString.indexOf("wR") + 2, receivedString.indexOf("rS") - receivedString.indexOf("wR") - 2))
+            _snow = parseFloat(receivedString.substr(receivedString.indexOf("rS") + 2, receivedString.indexOf("sMS") - receivedString.indexOf("rS") - 2))
+            _main = receivedString.substr(receivedString.indexOf("sMS") + 3, receivedString.indexOf("ms!") - receivedString.indexOf("sMS") - 3)
             
-//             return true
-//         } else {
-//             return false
-//         }
-//     }
+            return true
+        } else {
+            return false
+        }
+    }
 
-//     //% block="Request weather for a location with a Latitude %lat Longitude %lon using OpenWeatherMap authCode %openweatherid" 
-//     //% inlineInputMode=external lat.defl=5.41 lon.defl=100.34 openweatherid.defl=OpenWeatherMapAuthCode 
-//     export function requestWeather(lat: number, lon: number, openweatherid: string) {
-//         serial.writeString("W=" + openweatherid + "\n")
-//         basic.pause(150)
-//          _main = ""
-//         _temperature = 0
-//         _pressure = 0
-//         _humidity = 0
-//         _visibility = 0
-//         _uvindex = 0
-//         _cloudpct = 0
-//         _windspeed = 0
-//         _winddegree = 0
-//         _rain = 0
-//         _snow = 0
-//         serial.writeString("C" + lat.toString() + "," + lon.toString() + "\n")
-//         basic.pause(100)
-//     }
-// }
+    //% block="Request weather for a location with a Latitude %lat Longitude %lon using OpenWeatherMap authCode %openweatherid" 
+    //% inlineInputMode=external lat.defl=5.41 lon.defl=100.34 openweatherid.defl=OpenWeatherMapAuthCode 
+    export function requestWeather(lat: number, lon: number, openweatherid: string) {
+        serial.writeString("W=" + openweatherid + "\n")
+        basic.pause(150)
+         _main = ""
+        _temperature = 0
+        _pressure = 0
+        _humidity = 0
+        _visibility = 0
+        _uvindex = 0
+        _cloudpct = 0
+        _windspeed = 0
+        _winddegree = 0
+        _rain = 0
+        _snow = 0
+        serial.writeString("C" + lat.toString() + "," + lon.toString() + "\n")
+        basic.pause(100)
+    }
+}
