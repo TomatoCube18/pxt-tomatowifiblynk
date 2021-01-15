@@ -102,6 +102,12 @@ namespace TOMATOWIFIBLYNK {
         serial.writeString("c"+ msgString + "\n")
         basic.pause(100)
     }
+    
+    //% block="Send a reset signal to the WIFI module" 
+    export function resetWifi(msgString: string) {
+        serial.writeString("R!\n")
+        basic.pause(2000)
+    }
 
     //% block="Connect Wifi to SSID %ssid with a passcode %passcode with a Blynk id of %blynkid and a TimeZone of %timezone Ready indication %readyImg" 
     //% ssid.defl=MySSID passcode.defl=MyPasscode blynkid.defl=BlynkPassCode, readyImg.defl = false
