@@ -104,7 +104,7 @@ namespace TOMATOWIFIBLYNK {
     }
     
     //% block="Send a reset signal to the WIFI module" 
-    export function resetWifi(msgString: string) {
+    export function resetWifi() {
         serial.writeString("R!\n")
         basic.pause(2000)
     }
