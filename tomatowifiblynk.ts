@@ -90,7 +90,7 @@ namespace TOMATOWIFIBLYNK {
     export function isBlynkSigTrue(receivedString: string):boolean {
         if (receivedString.includes("BLYNK=Wv") && TomatoWifiConnected) {
             _blynkpin = parseInt(receivedString.substr(receivedString.indexOf("v") + 1, receivedString.indexOf("w") - receivedString.indexOf("v") - 1),10)
-            _blynkvalue = receivedString.substr(receivedString.indexOf("w") + 1, receivedString.length() - receivedString.indexOf("w") - 2)
+            _blynkvalue = receivedString.substr(receivedString.indexOf("w") + 1, receivedString.length - receivedString.indexOf("w") - 2)
             return true
         } else {
             return false
